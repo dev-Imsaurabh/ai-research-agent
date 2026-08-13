@@ -1,12 +1,15 @@
 from openai import OpenAI
-from dotenv import dotenv_values
+from dotenv import load_dotenv
 from pydantic import BaseModel
-
+import os
+import streamlit as st
+load_dotenv()
 class ResponseStructure(BaseModel):
     is_valid : bool
+open_router_api_key = os.getenv("OPEN_ROUTER_API_KEY")
 
-config = dotenv_values('.env')
-open_router_api_key = config.get("OPEN_ROUTER_API_KEY")
+if not open_router_api_key:
+    open_router_api_key = st.secrets.get("OPEN_ROUTER_API_KEY")
 
 client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=open_router_api_key)
 
