@@ -10,7 +10,7 @@ open_router_api_key = config.get("OPEN_ROUTER_API_KEY")
 
 client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=open_router_api_key)
 
-def check_content(query:str, extracted_content):
+def content_validator_agent(query:str, extracted_content):
     response = client.chat.completions.parse(
         model='openai/gpt-oss-20b',
         messages=[

@@ -7,7 +7,7 @@ open_router_api_key = config.get("OPEN_ROUTER_API_KEY")
 
 client = OpenAI(base_url="https://openrouter.ai/api/v1", api_key=open_router_api_key)
 
-def query_maker(query:str):
+def query_planner_agent(query:str):
     response = client.chat.completions.create(
         model='openai/gpt-oss-20b',
         messages=[
