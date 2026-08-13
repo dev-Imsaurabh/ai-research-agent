@@ -1,0 +1,22 @@
+[project]
+name = "ai-research-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Saurabh", email = "sau4478@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "dotenv>=0.9.9",
+    "openai>=3.0.0",
+    "streamlit>=1.61.1",
+    "tavily-python>=0.7.27",
+]
+
+[project.scripts]
+ai-research-agent = "ai_research_agent:main"
+
+[build-system]
+requires = ["uv_build>=0.12.3,<0.13.0"]
+build-backend = "uv_build"
