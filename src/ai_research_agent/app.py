@@ -1,6 +1,5 @@
 import streamlit as st
-from services import researcher
-
+from ai_research_agent.services import researcher
 
 make_report = researcher.make_report
 st.title("AI reseach agent")

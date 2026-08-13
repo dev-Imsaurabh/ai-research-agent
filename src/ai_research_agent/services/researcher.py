@@ -1,5 +1,6 @@
-from tools import web_search_tool
-from agent import content_extractor, content_validator, query_planner
+from ai_research_agent.agent import content_extractor, content_validator
+from ai_research_agent.tools import web_search_tool
+from ai_research_agent.agent import query_planner
 import time
 
 tavily_search = web_search_tool.search_by_tavily
