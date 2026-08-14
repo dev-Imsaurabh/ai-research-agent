@@ -4,7 +4,7 @@
  - You can check env variables keys from .env.example
  - Copy the variables to .env by running command in you terminal `$cp .env.example .env` or you can simply copy/paste
  - Replace the api keys in .env file
- - Finally, you can run the streamlit app by typing command `uv run streamlit run app.py`
+ - Finally, you can run the streamlit app by typing command `uv run streamlit run src/ai_research_agent/app.py`
 
 # The agent work:
 
