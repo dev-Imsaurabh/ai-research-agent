@@ -1,8 +1,8 @@
 import streamlit as st
-from ai_research_agent.services import researcher
+from ai_research_agent.services.researcher import researcher
 
-make_report = researcher.make_report
-st.title("AI reseach agent")
+make_report = researcher
+st.title("AI research agent")
 
 query = st.text_input("Enter your question", "")
 

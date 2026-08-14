@@ -1,15 +1,25 @@
-from ai_research_agent.agent import content_extractor, content_validator
 from ai_research_agent.tools import web_search_tool
-from ai_research_agent.agent import query_planner
 import time
+from dotenv import load_dotenv
+import os
+import streamlit as st
+from ai_research_agent.agent.agents import Agent
+
+load_dotenv()
+open_router_api_key = os.getenv("OPEN_ROUTER_API_KEY")
+
+if not open_router_api_key:
+    open_router_api_key = st.secrets.get("OPEN_ROUTER_API_KEY")
+
+agent = Agent(apikey=open_router_api_key)
 
 tavily_search = web_search_tool.search_by_tavily
-query_planner_agent = query_planner.query_planner_agent
-content_extractor_agent = content_extractor.content_extractor_agent
-content_validator_agent = content_validator.content_validator_agent
+query_planner_agent = agent.query_planner_agent
+content_extractor_agent = agent.content_extractor_agent
+content_validator_agent = agent.content_validator_agent
 
 
-def make_report(query:str, on_progress, max_attempt = 0):
+def researcher(query:str, on_progress, max_attempt = 0):
      on_progress("Understanding question...")
         #  lets call the make_query_agent to frame question absed on user query
      question = query_planner_agent(query)
@@ -35,4 +45,4 @@ def make_report(query:str, on_progress, max_attempt = 0):
         on_progress(f"Retrying: Attempt {max_attempt}")
         #keeping 2 second wait time to show agent is retrying
         time.sleep(2)
-        return make_report(query, on_progress, max_attempt)
+        return researcher(query, on_progress, max_attempt)
